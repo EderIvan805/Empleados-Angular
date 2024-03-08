@@ -1,0 +1,77 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Lista Empleados</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Lista Empleados</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-button class="register-button" [routerLink]="['/employers-register']"
+    >Registrar Empleado</ion-button
+  >
+  <!-- Barra de búsqueda -->
+  <ion-searchbar
+    class="search-bar"
+    [debounce]="1000"
+    (ionInput)="onSearch($event.target.value ?? '')"
+  ></ion-searchbar>
+  <!-- Tabla de empleados -->
+  <div class="table-container">
+    <table class="table">
+      <!-- Cabecera de la tabla -->
+      <thead>
+        <tr>
+          <th>Nombre Completo</th>
+          <th>Cargo</th>
+          <th>Edad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+
+      <!-- Cuerpo de la tabla -->
+      <tbody>
+        <tr *ngFor="let employer of employers">
+          <td data-label="Nombre Completo">
+            <div>{{employer.nombre}}</div>
+          </td>
+          <td data-label="Cargo">
+            <div>{{ getCargoName(employer.idCargo) }}</div>
+          </td>
+          <td data-label="Edad">
+            <div *ngIf="employer.isEdition">
+              <input
+                type="number"
+                [(ngModel)]="employer.edad"
+                class="form-control"
+              />
+            </div>
+            <div *ngIf="!employer.isEdition">{{employer.edad}}</div>
+          </td>
+          <td data-label="Acciones">
+            <ion-button
+              [disabled]="employer.estatus === false"
+              (click)="editEmployer(employer)"
+              >Editar</ion-button
+            >
+            <ion-button (click)="changeEmployerStatus(employer)"
+              >{{ employer.estatus ? 'Activo' : 'Inactivo' }}</ion-button
+            >
+            <ion-button (click)="deleteEmployer(employer)">Eliminar</ion-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pagination" *ngIf="query === ''">
+      <ion-button (click)="previousPage()" [disabled]="page === 1">Anterior</ion-button>
+      <span>Página {{ page }} de {{ totalPages }}</span>
+      <ion-button (click)="nextPage()" [disabled]="page === totalPages">Siguiente</ion-button>
+    </div>
+  </div>
+</ion-content>

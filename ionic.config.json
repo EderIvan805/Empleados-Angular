@@ -1,0 +1,7 @@
+{
+  "name": "empleados-angular",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

@@ -1,0 +1,62 @@
+{
+  "content": [
+    {
+      "id": "2",
+      "nombre": "Juan Perez",
+      "fechaNacimiento": 1643925600000,
+      "edad": 45,
+      "estatus": true,
+      "idCargo": 2
+    },
+    {
+      "id": "4",
+      "nombre": "Jose Perez",
+      "fechaNacimiento": 1643925600000,
+      "edad": 45,
+      "estatus": true,
+      "idCargo": 2
+    },
+    {
+      "id": "6",
+      "nombre": "Jose Perez",
+      "fechaNacimiento": 1643925600000,
+      "edad": 23,
+      "estatus": true,
+      "idCargo": 2,
+      "isEdition": false
+    },
+    {
+      "id": "7",
+      "nombre": "Jose Perez",
+      "fechaNacimiento": 1643925600000,
+      "edad": 45,
+      "estatus": true,
+      "idCargo": 2
+    }
+  ],
+  "pageable": {
+    "sort": {
+      "empty": false,
+      "sorted": true,
+      "unsorted": false
+    },
+    "offset": 0,
+    "pageNumber": 0,
+    "pageSize": 100,
+    "paged": true,
+    "unpaged": false
+  },
+  "totalPages": 1,
+  "totalElements": 6,
+  "last": true,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "sorted": true,
+    "unsorted": false
+  },
+  "size": 10,
+  "numberOfElements": 6,
+  "first": true,
+  "empty": false
+}

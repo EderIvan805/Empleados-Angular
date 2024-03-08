@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Registrar Empleado</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Registrar Empleado</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <form [formGroup]="formData" (ngSubmit)="addEmployer(formData)">
+    <ion-list class="custom">
+      <ion-item class="custom">
+        <ion-input
+          labelPlacement="stacked"
+          label="Nombre Completo*"
+          formControlName="fullName"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="custom">
+        <ion-input
+          labelPlacement="stacked"
+          label="Fecha de Nacimiento*"
+          type="date"
+          formControlName="birthDate"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="custom">
+        <ion-input
+          labelPlacement="stacked"
+          label="Edad*"
+          type="number"
+          formControlName="age"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="custom">
+        <ion-select
+          labelPlacement="stacked"
+          label="Cargo*"
+          formControlName="position"
+        >
+          <ion-select-option
+            *ngFor="let position of positions"
+            [value]="position.id"
+            >{{ position.name }}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item class="custom">
+        <ion-select
+          labelPlacement="stacked"
+          label="Estatus*"
+          formControlName="status"
+        >
+          <ion-select-option value="activo" selected>Activo</ion-select-option>
+          <ion-select-option value="inactivo">Inactivo</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <ion-button
+      [disabled]="!formData.valid"
+      class="custom"
+      type="submit"
+      expand="block"
+      >Registrar empleado</ion-button
+    >
+  </form>
+</ion-content>
